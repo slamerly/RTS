@@ -26,6 +26,7 @@ void MoveComponent::setAngularSpeed(float angularSpeedP)
 
 void MoveComponent::update(float dt)
 {
+	/*
 	if (!Maths::nearZero(angularSpeed) && (forwardSpeed > 25.0f || forwardSpeed < -25.0f))
 	{
 		float newRotation = owner.getRotation() + angularSpeed * dt;
@@ -35,16 +36,15 @@ void MoveComponent::update(float dt)
 		}
 		owner.setRotation(newRotation);
 	}
+	*/
 	if (!Maths::nearZero(forwardSpeed))
 	{
 		Vector2 newPosition = owner.getPosition() + owner.getForward() * forwardSpeed * dt;
 		owner.setPosition(newPosition);
 	}
-	/*
 	if (!Maths::nearZero(upSpeed))
 	{
 		Vector2 newPosition = owner.getPosition() + owner.getUp() * upSpeed * dt;
 		owner.setPosition(newPosition);
 	}
-	*/
 }

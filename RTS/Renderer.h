@@ -34,6 +34,8 @@ public:
 	void drawSprites();
 	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
 
+	std::vector<SpriteComponent*> getSprites() { return sprites; }
+
 	inline SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
 	void close();
 

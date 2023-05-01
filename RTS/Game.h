@@ -6,6 +6,7 @@
 #include "SpriteComponent.h"
 #include "Grid.h"
 #include "Moto.h"
+#include "Commander.h"
 
 using std::vector;
 
@@ -45,8 +46,8 @@ public:
 	// Game specific
 	vector<Moto*> getMotos() { return motos; }
 	bool getPartyIsEnd() { return partyIsEnd; }
-
-	void setScore(int scoreP);
+	Grid* getGrid() { return grid; }
+	vector<Actor*> getActors() { return actors; }
 	void endGame();
 
 private:
@@ -69,6 +70,8 @@ private:
 	// Game specific
 	Grid* grid;
 	vector<Moto*> motos;
+	Commander* command;
+
 	bool partyIsEnd = false;
 };
 

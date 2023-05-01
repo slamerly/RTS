@@ -12,10 +12,11 @@ public:
     class Tile& getStartTile();
     class Tile& getEndTile();
 
+    //void moveMap(Vector2 valueAdd) override;
+
 private:
     void selectTile(size_t row, size_t col);
     class Tile* selectedTile;
-
 
     // 2D vector of tiles in grid
     std::vector<std::vector<class Tile*>> tiles;

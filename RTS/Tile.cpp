@@ -6,12 +6,14 @@
 Tile::Tile() :
 	Actor(), collision(nullptr), sprite(nullptr), tileState(TileState::Default), isSelected(false)
 {
+	tag = "map";
 }
 
 void Tile::updateActor(float dt)
 {
 	for (size_t i = 0; i < getGame().getMotos().size(); i++)
 	{
+		/*
 		if (collision != nullptr 
 			&& Intersect(getGame().getMotos()[i]->getCollision(), *collision) 
 			&& (getGame().getMotos()[i]->getInputComponent().getForwardSpeed() >= 5
@@ -30,6 +32,7 @@ void Tile::updateActor(float dt)
 				getGame().getMotos()[i]->getInputComponent().setCrash(true);
 			}
 		}
+		*/
 	}
 }
 

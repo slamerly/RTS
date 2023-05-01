@@ -2,6 +2,7 @@
 #include <SDL_scancode.h>
 #include <iostream>
 #include "Maths.h"
+#include "Game.h"
 
 InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),
@@ -24,21 +25,29 @@ InputComponent::InputComponent(Actor* ownerP) :
 
 void InputComponent::processInput(const Uint8* keyState)
 {
+	forwardSpeed = 0.0f;
+	if (keyState[rightKey])
+	{
+		forwardSpeed += maxForwardSpeed;
+	}
+	else if (keyState[leftKey])
+	{
+		forwardSpeed -= maxForwardSpeed;
+	}
+	setForwardSpeed(forwardSpeed);
+
+	upSpeed = 0.0f;
 	if (keyState[upKey])
 	{
-		//forwardSpeed += maxForwardSpeed;
-		if (forwardSpeed < maxForwardSpeed)
-			forwardSpeed += 1.0f;
+		upSpeed -= maxForwardSpeed;
 	}
 	else if (keyState[downKey])
 	{
-		if (forwardSpeed > 0)
-		{ 
-			forwardSpeed -= 3.0f;		
-		}
-		else if (forwardSpeed > (maxForwardSpeed / 2) * -1)
-		forwardSpeed -= 1.0f;
+		upSpeed += maxForwardSpeed;
 	}
+	setUpSpeed(upSpeed);
+
+	/*
 	else
 	{
 		if(forwardSpeed > 0)
@@ -83,18 +92,6 @@ void InputComponent::processInput(const Uint8* keyState)
 			angularSpeed += Maths::toRadians(10.0f);
 	}
 	setAngularSpeed(angularSpeed);
-	
-	/*
-	float upSpeed = 0.0f;
-	if (keyState[upKey])
-	{
-		upSpeed += maxUpSpeed;
-	}
-	if (keyState[downKey])
-	{
-		upSpeed -= maxUpSpeed;
-	}
-	setUpSpeed(upSpeed);
 	*/
 }
 

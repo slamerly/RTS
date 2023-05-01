@@ -25,6 +25,7 @@
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
+    <ClCompile Include="Commander.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="BackgroundSpriteComponent.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
+    <ClInclude Include="Commander.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />

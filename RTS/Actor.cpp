@@ -9,9 +9,11 @@ Actor::Actor() :
 	position(Vector2::zero),
 	scale(1.0f),
 	rotation(0.0f),
-	game(Game::instance())
+	game(Game::instance()),
+	tag("")
 {
 	game.addActor(this);
+	initPos = getPosition();
 }
 
 Actor::~Actor()
@@ -117,4 +119,14 @@ void Actor::processInput(const Uint8* keyState)
 
 void Actor::actorInput(const Uint8* keyState)
 {
+}
+
+void Actor::setInitPosition(Vector2 initPosP)
+{
+	initPos = initPosP;
+}
+
+void Actor::moveMap(Vector2 valueAdd)
+{
+	setPosition(initPos + valueAdd);
 }

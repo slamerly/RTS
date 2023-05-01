@@ -4,6 +4,8 @@
 Grid::Grid() :
 	Actor(), selectedTile(nullptr)
 {
+	tag = "map";
+
 	tiles.resize(NB_ROWS);
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
@@ -40,6 +42,7 @@ Grid::Grid(std::vector<std::vector<int>>* circuit) :
 		{
 			tiles[i][j] = new Tile();
 			tiles[i][j]->setPosition(Vector2(TILESIZE / 2.0f + j * TILESIZE, START_Y + i * TILESIZE));
+			tiles[i][j]->setInitPosition(tiles[i][j]->getPosition());
 
 			switch (circuit->at(i).at(j))
 			{
@@ -87,6 +90,20 @@ Tile& Grid::getEndTile()
 {
 	return *tiles[3][NB_COLS-1];
 }
+
+/*
+void Grid::moveMap(Vector2 valueAdd)
+{
+	setPosition(getInitPosition() + valueAdd);
+	for (size_t i = 0; i < NB_ROWS; i++)
+	{
+		for (size_t j = 0; j < NB_COLS; j++)
+		{
+			tiles[i][j]->moveMap(valueAdd);
+		}
+	}
+}
+*/
 
 void Grid::selectTile(size_t row, size_t col)
 {

@@ -46,6 +46,8 @@ void Game::load()
     //grid = new Grid();
     grid = new Grid(&circuit);
 
+    command = new Commander();
+
     motoInit();
 }
 
@@ -214,17 +216,19 @@ void Game::motoInit()
     Moto* moto = new Moto();
     moto->setPosition({ 100, 400 });
     moto->setRotation(Maths::toRadians(90));
+    moto->setInitPosition(moto->getPosition());
 
     motos.push_back(moto);
 
     Moto* moto2 = new Moto();
     moto2->getSpriteComponent().setTexture(Assets::getTexture("Moto2"));
-    moto2->getInputComponent().setUpKey(SDL_SCANCODE_W);
-    moto2->getInputComponent().setDownKey(SDL_SCANCODE_S);
-    moto2->getInputComponent().setLeftKey(SDL_SCANCODE_A);
-    moto2->getInputComponent().setRightKey(SDL_SCANCODE_D);
+    //moto2->getInputComponent().setUpKey(SDL_SCANCODE_W);
+    //moto2->getInputComponent().setDownKey(SDL_SCANCODE_S);
+    //moto2->getInputComponent().setLeftKey(SDL_SCANCODE_A);
+    //moto2->getInputComponent().setRightKey(SDL_SCANCODE_D);
     moto2->setPosition({ 60, 400 });
     moto2->setRotation(Maths::toRadians(90));
+    moto2->setInitPosition(moto2->getPosition());
 
     motos.push_back(moto2);
 }

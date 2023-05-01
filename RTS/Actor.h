@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 #include "Vector2.h"
 #include "SDL_stdinc.h"
 
@@ -42,10 +43,18 @@ public:
 	void processInput(const Uint8* keyState);
 	virtual void actorInput(const Uint8* keyState);
 
+	// RTS
+	Vector2 getInitPosition() { return initPos; }
+	std::string tag;
+
+	void setInitPosition(Vector2 initPosP);
+	virtual void moveMap(Vector2 valueAdd);
+
 private:
 	Game& game;
 	ActorState state;
 	Vector2 position;
+	Vector2 initPos;
 	float scale;
 	float rotation;
 
