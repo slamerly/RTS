@@ -7,6 +7,7 @@
 #include "Grid.h"
 #include "Moto.h"
 #include "Commander.h"
+#include "Soldier.h"
 
 using std::vector;
 
@@ -40,6 +41,7 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
+	vector<Actor*> getActors() { return actors; }
 
 	Renderer& getRenderer() { return renderer; }
 
@@ -47,7 +49,6 @@ public:
 	vector<Moto*> getMotos() { return motos; }
 	bool getPartyIsEnd() { return partyIsEnd; }
 	Grid* getGrid() { return grid; }
-	vector<Actor*> getActors() { return actors; }
 	void endGame();
 
 private:
@@ -70,6 +71,7 @@ private:
 	// Game specific
 	Grid* grid;
 	vector<Moto*> motos;
+	vector<Soldier*> soldiers;
 	Commander* command;
 
 	bool partyIsEnd = false;

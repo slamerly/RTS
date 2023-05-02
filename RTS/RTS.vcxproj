@@ -39,6 +39,7 @@
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RectangleCollisionComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -67,6 +68,7 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleCollisionComponent.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Soldier.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />

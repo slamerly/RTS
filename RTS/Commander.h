@@ -21,10 +21,6 @@ private:
     float maxForwardSpeed;
     float maxUpSpeed;
 
-    Actor* map;
-    Vector2 initPos;
-    InputComponent* inputComp;
-
     void move();
 };
 

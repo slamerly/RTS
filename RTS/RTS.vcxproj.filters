@@ -94,7 +94,10 @@
     <ClCompile Include="Tile.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
-    <ClCompile Include="Commander.cpp" />
+    <ClCompile Include="Commander.cpp">
+      <Filter>GameSpecific</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimSpriteComponent.h">
@@ -172,6 +175,9 @@
     <ClInclude Include="Tile.h">
       <Filter>GameSpecific</Filter>
     </ClInclude>
-    <ClInclude Include="Commander.h" />
+    <ClInclude Include="Commander.h">
+      <Filter>GameSpecific</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier.h" />
   </ItemGroup>
 </Project>

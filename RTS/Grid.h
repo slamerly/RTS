@@ -9,10 +9,6 @@ public:
     Grid(std::vector<std::vector<int>>* circuit);
 
     void processClick(int x, int y);
-    class Tile& getStartTile();
-    class Tile& getEndTile();
-
-    //void moveMap(Vector2 valueAdd) override;
 
 private:
     void selectTile(size_t row, size_t col);
@@ -21,8 +17,8 @@ private:
     // 2D vector of tiles in grid
     std::vector<std::vector<class Tile*>> tiles;
 
-    const size_t NB_ROWS = 15;
-    const size_t NB_COLS = 20; // 16
+    const size_t NB_ROWS = 30; // 15
+    const size_t NB_COLS = 40; // 20
 
     // Start y position of top left corner
     const float START_Y = 20;

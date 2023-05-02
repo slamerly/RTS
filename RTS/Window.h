@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-constexpr int WINDOW_WIDTH = 800;
+constexpr int WINDOW_WIDTH = 1040;
 constexpr int WINDOW_HEIGHT = 600;
 
 class Window

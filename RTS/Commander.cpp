@@ -9,9 +9,6 @@ Commander::Commander() :
 	maxForwardSpeed = 300.0f;
 	maxUpSpeed = 300.0f;
 
-	map = getGame().getGrid();
-	initPos = map->getPosition();
-
 	mc = new MoveComponent(this);
 }
 
@@ -26,12 +23,12 @@ void Commander::actorInput(const Uint8* keyState)
 	Uint32 mouse = SDL_GetMouseState(&x, &y);
 
 	forwardSpeed = 0.0f;
-	if (keyState[SDL_SCANCODE_LEFT] || x <= 100)
+	if (keyState[SDL_SCANCODE_LEFT] || x <= 75)
 	{
 		forwardSpeed += maxForwardSpeed;
 		move();
 	}
-	else if (keyState[SDL_SCANCODE_RIGHT] || x >= WINDOW_WIDTH - 100)
+	else if (keyState[SDL_SCANCODE_RIGHT] || x >= WINDOW_WIDTH - 75)
 	{
 		forwardSpeed -= maxForwardSpeed;
 		move();
@@ -39,17 +36,22 @@ void Commander::actorInput(const Uint8* keyState)
 	mc->setForwardSpeed(forwardSpeed);
 
 	upSpeed = 0.0f;
-	if (keyState[SDL_SCANCODE_DOWN] || y >= WINDOW_HEIGHT - 100)
+	if (keyState[SDL_SCANCODE_DOWN] || y >= WINDOW_HEIGHT - 75)
 	{
 		upSpeed += maxForwardSpeed;
 		move();
 	}
-	else if (keyState[SDL_SCANCODE_UP] || y <= 100)
+	else if (keyState[SDL_SCANCODE_UP] || y <= 75)
 	{
 		upSpeed -= maxForwardSpeed;
 		move();
 	}
 	mc->setUpSpeed(upSpeed);
+
+	if (SDL_BUTTON(mouse) & SDL_BUTTON_LEFT)
+	{
+		getGame().getGrid()->processClick(x, y);
+	}
 }
 
 void Commander::move()

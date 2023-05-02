@@ -1,5 +1,6 @@
 #include "Grid.h"
 #include "Tile.h"
+#include <iostream>
 
 Grid::Grid() :
 	Actor(), selectedTile(nullptr)
@@ -30,6 +31,8 @@ Grid::Grid() :
 Grid::Grid(std::vector<std::vector<int>>* circuit) :
 	Actor(), selectedTile(nullptr)
 {
+	tag = "map";
+
 	tiles.resize(NB_ROWS);
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
@@ -68,8 +71,11 @@ Grid::Grid(std::vector<std::vector<int>>* circuit) :
 
 void Grid::processClick(int x, int y)
 {
+	x -= getPosition().x;
+	y -= getPosition().y;
+
 	y -= static_cast<int>(START_Y - TILESIZE / 2);
-	if (y <= 0)
+	if (y >= 0)
 	{
 		x /= static_cast<int>(TILESIZE);
 		y /= static_cast<int>(TILESIZE);
@@ -81,31 +87,8 @@ void Grid::processClick(int x, int y)
 	}
 }
 
-Tile& Grid::getStartTile()
-{
-	return *tiles[3][0];
-}
-
-Tile& Grid::getEndTile()
-{
-	return *tiles[3][NB_COLS-1];
-}
-
-/*
-void Grid::moveMap(Vector2 valueAdd)
-{
-	setPosition(getInitPosition() + valueAdd);
-	for (size_t i = 0; i < NB_ROWS; i++)
-	{
-		for (size_t j = 0; j < NB_COLS; j++)
-		{
-			tiles[i][j]->moveMap(valueAdd);
-		}
-	}
-}
-*/
-
 void Grid::selectTile(size_t row, size_t col)
 {
+	std::cout << "Tile Selected : " << row << ", " << col << std::endl;
 	tiles[row][col]->toggleSelect();
 }

@@ -5,7 +5,7 @@
 #include <typeinfo>
 
 MoveComponent::MoveComponent(Actor* ownerP, int updateOrderP): 
-	Component(ownerP, updateOrderP), forwardSpeed(0.0f), angularSpeed(0.0f)
+	Component(ownerP, updateOrderP), forwardSpeed(0.0f), angularSpeed(0.0f), upSpeed(0.0f)
 {
 }
 
