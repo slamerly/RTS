@@ -50,6 +50,7 @@ public:
 	bool getPartyIsEnd() { return partyIsEnd; }
 	Grid* getGrid() { return grid; }
 	vector<vector<int>>* getMap() { return &map; }
+	vector<Soldier*> getSoldiers() { return soldiers; }
 	void endGame();
 
 private:

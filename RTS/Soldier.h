@@ -1,8 +1,9 @@
 #pragma once
 #include "Actor.h"
 #include "CircleCollisionComponent.h"
-#include "MoveComponent.h"
+//#include "MoveComponent.h"
 #include "Astar.h"
+#include "NavComponent.h"
 
 class Soldier :
     public Actor
@@ -17,7 +18,8 @@ public:
 
 private:
     CircleCollisionComponent* collision;
-    MoveComponent* mc;
+    //MoveComponent* mc;
+    NavComponent* nc;
     Astar* ast;
 
     Vector2 gridPosition;

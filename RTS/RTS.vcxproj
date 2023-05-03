@@ -36,6 +36,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Moto.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="NavComponent.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RectangleCollisionComponent.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Moto.h" />
     <ClInclude Include="MoveComponent.h" />
+    <ClInclude Include="NavComponent.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleCollisionComponent.h" />

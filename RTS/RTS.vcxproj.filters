@@ -103,6 +103,7 @@
     <ClCompile Include="Soldier.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
+    <ClCompile Include="NavComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimSpriteComponent.h">
@@ -189,5 +190,6 @@
     <ClInclude Include="Soldier.h">
       <Filter>GameSpecific</Filter>
     </ClInclude>
+    <ClInclude Include="NavComponent.h" />
   </ItemGroup>
 </Project>

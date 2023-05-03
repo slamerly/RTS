@@ -2,6 +2,7 @@
 #include "SpriteComponent.h"
 #include "Assets.h"
 #include "Game.h"
+#include <iostream>
 
 Soldier::Soldier(Vector2 GridPositionP) :
 	Actor()
@@ -13,7 +14,9 @@ Soldier::Soldier(Vector2 GridPositionP) :
 	collision = new CircleCollisionComponent(this);
 	collision->setRadius(20.0f);
 
-	mc = new MoveComponent(this);
+	//mc = new MoveComponent(this);
+	nc = new NavComponent(this);
+	nc->setFSpeed(150);
 
 	ast = new Astar(getGame().getMap());
 
@@ -22,10 +25,22 @@ Soldier::Soldier(Vector2 GridPositionP) :
 
 Soldier::~Soldier()
 {
-	delete collision, mc, ast;
+	delete collision, nc, ast;
 }
 
 void Soldier::shift(Vector2 target)
 {
 	std::vector<Vector2> pred = ast->mostShortWay(gridPosition, target);
+
+	reverse(pred.begin(), pred.end());
+
+	for (auto vec : pred)
+	{
+		std::cout << "[" << vec.x << ", " << vec.y << "] -> ";
+	}
+
+	//gridPosition = pred.at(pred.size() - 1);
+
+	nc->initializePath(pred);
+	//gridPosition = pred.at(pred.size());
 }

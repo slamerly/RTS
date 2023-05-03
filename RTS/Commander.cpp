@@ -51,6 +51,7 @@ void Commander::actorInput(const Uint8* keyState)
 	if (SDL_BUTTON(mouse) & SDL_BUTTON_LEFT)
 	{
 		getGame().getGrid()->processClick(x, y);
+		getGame().getSoldiers().at(0)->shift(getGame().getGrid()->getVectorTileSelected());
 	}
 }
 

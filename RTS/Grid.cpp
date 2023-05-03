@@ -82,9 +82,15 @@ void Grid::processClick(int x, int y)
 
 		if (x >= 0 && x < static_cast<int>(NB_COLS) && y >= 0 && y < static_cast<int>(NB_ROWS))
 		{
+			vectorTileSelected = { float(y), float(x) };
 			selectTile(y, x);
 		}
 	}
+}
+
+Tile* Grid::getTile(size_t row, size_t col)
+{
+	return tiles[row][col];
 }
 
 void Grid::selectTile(size_t row, size_t col)

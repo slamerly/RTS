@@ -11,12 +11,13 @@ vector<Vector2> Astar::mostShortWay(Vector2 start, Vector2 target)
 {
 	Vector2 currentNode;
 
+	//cout << "target : " << target.x << ", " << target.y << endl;
+
 	initialize(graph, start);
 
 	while (!openList.empty())
 	{
 		currentNode = openList.at(0);
-		//cout << "currentNode : " << currentNode.x << ", " << currentNode.y << endl;
 
 		for (int i = 1; i < openList.size(); i++)
 		{
@@ -25,6 +26,8 @@ vector<Vector2> Astar::mostShortWay(Vector2 start, Vector2 target)
 				currentNode = openList.at(i);
 			}
 		}
+
+		//cout << "currentNode : " << currentNode.x << ", " << currentNode.y << endl;
 
 		auto iter = find(begin(openList), end(openList), currentNode);
 		openList.erase(iter);
@@ -109,7 +112,7 @@ void Astar::findNeightbours(vector<vector<int>>* graph, Vector2 node)
 				if (node.y + j >= 0 && node.y + j < graph->at(0).size()
 					&& (i != 0 || j != 0))
 				{
-					if (graph->at(node.x + i).at(node.y + j) != 0)
+					if (graph->at(node.x + i).at(node.y + j) < 1)
 					{
 						//cout << "    " << node.x + i << ", " << node.y + j << endl;
 						neighbours.push_back({ node.x + i, node.y + j });
@@ -128,7 +131,6 @@ void Astar::initialize(vector<vector<int>>* mat, Vector2 deb)
 	predecessor.clear();
 	neighbours.clear();
 	heuristique.clear();
-
 
 	openList.push_back(deb);
 
@@ -153,4 +155,5 @@ void Astar::initialize(vector<vector<int>>* mat, Vector2 deb)
 
 		predecessor.push_back(linePred);
 	}
+	//std::cout << "dist : " << distance.size() << std::endl;
 }

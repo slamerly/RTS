@@ -84,9 +84,9 @@ void Game::load()
 
     command = new Commander();
 
-    Soldier* soldier = new Soldier();
-    soldier->setPosition({ 100, 400 });
-    soldier->setRotation(Maths::toRadians(90));
+    Soldier* soldier = new Soldier({ 10, 2 });
+    soldier->setPosition({ 100, 420 });
+    //soldier->setRotation(Maths::toRadians(90));
     soldier->setInitPosition(soldier->getPosition());
 
     soldiers.push_back(soldier);

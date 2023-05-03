@@ -9,6 +9,9 @@ public:
     Grid(std::vector<std::vector<int>>* circuit);
 
     void processClick(int x, int y);
+    class Tile* getTile(size_t row, size_t col);
+
+    Vector2 getVectorTileSelected() { return vectorTileSelected; }
 
 private:
     void selectTile(size_t row, size_t col);
@@ -24,5 +27,7 @@ private:
     const float START_Y = 20;
 
     const float TILESIZE = 40.0f;
+
+    Vector2 vectorTileSelected;
 };
 
