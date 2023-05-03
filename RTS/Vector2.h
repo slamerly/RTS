@@ -53,6 +53,22 @@ struct Vector2
 		y *= scalar;
 		return *this;
 	}
+
+	bool operator==(const Vector2& right)
+	{
+		if (x == right.x && y == right.y)
+			return true;
+		else
+			return false;
+	}
+
+	bool operator!=(const Vector2& right)
+	{
+		if (x != right.x || y != right.y)
+			return true;
+		else
+			return false;
+	}
 	
 	friend Vector2 operator+(const Vector2& left, const Vector2& right)
 	{

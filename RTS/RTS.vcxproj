@@ -22,6 +22,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Astar.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="Astar.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="CircleCollisionComponent.h" />

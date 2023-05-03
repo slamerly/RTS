@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "CircleCollisionComponent.h"
 #include "MoveComponent.h"
+#include "Astar.h"
 
 class Soldier :
     public Actor
@@ -14,5 +15,6 @@ public:
 private:
     CircleCollisionComponent* collision;
     MoveComponent* mc;
+    Astar* ast;
 };
 

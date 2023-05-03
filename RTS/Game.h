@@ -49,6 +49,7 @@ public:
 	vector<Moto*> getMotos() { return motos; }
 	bool getPartyIsEnd() { return partyIsEnd; }
 	Grid* getGrid() { return grid; }
+	vector<vector<int>>* getMap() { return &map; }
 	void endGame();
 
 private:
@@ -73,6 +74,7 @@ private:
 	vector<Moto*> motos;
 	vector<Soldier*> soldiers;
 	Commander* command;
+	vector<vector<int>> map;
 
 	bool partyIsEnd = false;
 };
