@@ -3,7 +3,7 @@
 #include "Assets.h"
 #include "Game.h"
 
-Soldier::Soldier() :
+Soldier::Soldier(Vector2 GridPositionP) :
 	Actor()
 {
 	tag = "map";
@@ -16,4 +16,16 @@ Soldier::Soldier() :
 	mc = new MoveComponent(this);
 
 	ast = new Astar(getGame().getMap());
+
+	gridPosition = GridPositionP;
+}
+
+Soldier::~Soldier()
+{
+	delete collision, mc, ast;
+}
+
+void Soldier::shift(Vector2 target)
+{
+	std::vector<Vector2> pred = ast->mostShortWay(gridPosition, target);
 }
