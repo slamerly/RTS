@@ -46,6 +46,8 @@ public:
 	// RTS
 	Vector2 getInitPosition() { return initPos; }
 	std::string tag;
+	bool inMovement = false;
+	Vector2 valueAddView;
 
 	void setInitPosition(Vector2 initPosP);
 	virtual void moveMap(Vector2 valueAdd);

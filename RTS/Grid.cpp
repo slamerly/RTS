@@ -93,6 +93,25 @@ Tile* Grid::getTile(size_t row, size_t col)
 	return tiles[row][col];
 }
 
+Vector2 Grid::getLocationOnGrid(Vector2 position)
+{
+	position.x -= getPosition().x;
+	position.y -= getPosition().y;
+
+	position.y -= static_cast<int>(START_Y - TILESIZE / 2);
+	if (position.y >= 0)
+	{
+		position.x /= static_cast<int>(TILESIZE);
+		position.y /= static_cast<int>(TILESIZE);
+
+		if (position.x >= 0 && position.x < static_cast<int>(NB_COLS) && position.y >= 0 && position.y < static_cast<int>(NB_ROWS))
+		{
+			std::cout << position.y << ", " << position.x << std::endl;
+			return { round(position.y), round(position.x) };
+		}
+	}
+}
+
 void Grid::selectTile(size_t row, size_t col)
 {
 	std::cout << "Tile Selected : " << row << ", " << col << std::endl;

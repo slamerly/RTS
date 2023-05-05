@@ -9,6 +9,9 @@ Commander::Commander() :
 	maxForwardSpeed = 300.0f;
 	maxUpSpeed = 300.0f;
 
+	//maxForwardSpeed = 5.0f;
+	//maxUpSpeed = 5.0f;
+
 	mc = new MoveComponent(this);
 }
 

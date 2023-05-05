@@ -14,6 +14,8 @@ public:
 
     CircleCollisionComponent& getCollision() { return *collision; }
 
+    void actorInput(const Uint8* keyState) override;
+    void moveMap(Vector2 valueAdd) override;
     void shift(Vector2 target);
 
 private:

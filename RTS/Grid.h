@@ -12,6 +12,7 @@ public:
     class Tile* getTile(size_t row, size_t col);
 
     Vector2 getVectorTileSelected() { return vectorTileSelected; }
+    Vector2 getLocationOnGrid(Vector2 position);
 
 private:
     void selectTile(size_t row, size_t col);

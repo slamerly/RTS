@@ -21,4 +21,6 @@ private:
 	std::vector<Vector2> path;
 	float fSpeed = 0.0f;
 	int cpt = 0;
+
+	float forwardSpeed;
 };
