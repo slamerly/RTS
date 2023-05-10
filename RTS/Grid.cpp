@@ -19,6 +19,7 @@ Grid::Grid() :
 		{
 			tiles[i][j] = new Tile();
 			tiles[i][j]->setPosition(Vector2(TILESIZE / 2.0f + j * TILESIZE, START_Y + i * TILESIZE));
+			tiles[i][j]->setGridPosition(tiles[i][j]->getPosition() - getPosition());
 			tiles[i][j]->setTileState(Tile::TileState::Default);
 		}
 	}
@@ -45,6 +46,7 @@ Grid::Grid(std::vector<std::vector<int>>* circuit) :
 		{
 			tiles[i][j] = new Tile();
 			tiles[i][j]->setPosition(Vector2(TILESIZE / 2.0f + j * TILESIZE, START_Y + i * TILESIZE));
+			tiles[i][j]->setGridPosition(tiles[i][j]->getPosition() - getPosition());
 			tiles[i][j]->setInitPosition(tiles[i][j]->getPosition());
 
 			switch (circuit->at(i).at(j))
@@ -95,8 +97,8 @@ Tile* Grid::getTile(size_t row, size_t col)
 
 Vector2 Grid::getLocationOnGrid(Vector2 position)
 {
-	position.x -= getPosition().x;
-	position.y -= getPosition().y;
+	//position.x -= getPosition().x;
+	//position.y -= getPosition().y;
 
 	position.y -= static_cast<int>(START_Y - TILESIZE / 2);
 	if (position.y >= 0)
@@ -106,7 +108,7 @@ Vector2 Grid::getLocationOnGrid(Vector2 position)
 
 		if (position.x >= 0 && position.x < static_cast<int>(NB_COLS) && position.y >= 0 && position.y < static_cast<int>(NB_ROWS))
 		{
-			std::cout << position.y << ", " << position.x << std::endl;
+			//std::cout << position.y << ", " << position.x << std::endl;
 			return { round(position.y), round(position.x) };
 		}
 	}

@@ -42,6 +42,17 @@ void Tile::setTileState(TileState tileStateP)
 	updateTexture();
 }
 
+void Tile::setGridPosition(Vector2 gridPositionP)
+{
+	gridPosition = gridPositionP;
+	//setPosition(getGame().getGrid()->getPosition() + getGridPosition());
+}
+
+void Tile::moveMap(Vector2 valueAdd)
+{
+	setPosition(getGame().getGrid()->getPosition() + getGridPosition());
+}
+
 void Tile::toggleSelect()
 {
 	isSelected = !isSelected;

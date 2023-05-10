@@ -24,6 +24,8 @@ public:
 
     TileState getTileState() const { return tileState; }
     void setTileState(TileState tileStateP);
+    void setGridPosition(Vector2 gridPositionP) override;
+    void moveMap(Vector2 valueAdd) override;
 
     void toggleSelect();
 

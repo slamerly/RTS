@@ -130,3 +130,8 @@ void Actor::moveMap(Vector2 valueAdd)
 {
 	setPosition(initPos + valueAdd);
 }
+
+void Actor::setGridPosition(Vector2 gridPositionP)
+{
+	gridPosition = gridPositionP;
+}
