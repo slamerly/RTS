@@ -1,7 +1,6 @@
 #pragma once
 #include "Actor.h"
 #include "CircleCollisionComponent.h"
-//#include "MoveComponent.h"
 #include "Astar.h"
 #include "NavComponent.h"
 
@@ -21,7 +20,6 @@ public:
 
 private:
     CircleCollisionComponent* collision;
-    //MoveComponent* mc;
     NavComponent* nc;
     Astar* ast;
 

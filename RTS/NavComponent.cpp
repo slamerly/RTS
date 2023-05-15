@@ -14,10 +14,8 @@ NavComponent::NavComponent(Actor* owner, int updateOrder) :
 
 void NavComponent::update(float dt)
 {
-	//cout << "soldier : " << owner.getPosition().x << ", " << owner.getPosition().y << endl;
 	if (cpt < path.size())
 	{
-		//std::cout << cpt << endl;
 		setForwardSpeed(fSpeed);
 		forwardSpeed = fSpeed;
 		Vector2 dist = owner.getGridPosition() - nextNode->getGridPosition();
@@ -26,11 +24,7 @@ void NavComponent::update(float dt)
 			cpt++;
 			if (cpt < path.size())
 			{
-				//cout << path.at(cpt).x << ", " << path.at(cpt).y << " : " << endl;
-				 
-				
 				nextNode = owner.getGame().getGrid()->getTile(path.at(cpt).x, path.at(cpt).y);
-				//cout << "initiale : " << nextNode->getPosition().x << ", " << nextNode->getPosition().y << endl;
 				turnTo(nextNode->getGridPosition());
 			}
 			else
@@ -38,33 +32,12 @@ void NavComponent::update(float dt)
 				setForwardSpeed(0.0f);
 				forwardSpeed = 0;
 				owner.inMovement = false;
-				//owner.setInitPosition(nextNode->getPosition());
 			}
-			//owner.setInitPosition(owner.getPosition());
-		}
-		else
-		{
-			//cout << nextNode->getPosition().x << ", " << nextNode->getPosition().y << endl;
-			//owner.setInitPosition(owner.getPosition());
-			//turnTo(nextNode->getPosition());
 		}
 	}
-	else
-	{
-		//setForwardSpeed(0.0f);
-	}
-	//MoveComponent::update(dt);
 	if (!Maths::nearZero(forwardSpeed))
 	{
-		//Vector2 newPosition = owner.getPosition() + (owner.valueAddView * 0.1f);
-		//newPosition += owner.getForward() * forwardSpeed * dt;
 		Vector2 newPosition = owner.getGridPosition() + owner.getForward() * forwardSpeed * dt;
-		/*
-		if (owner.valueAddView != Vector2::zero)
-		{
-			newPosition = owner.getPosition() + owner.getForward() * forwardSpeed * dt + owner.valueAddView;
-		}
-		*/
 		owner.setGridPosition(newPosition);
 	}
 	owner.valueAddView = Vector2::zero;
