@@ -49,6 +49,10 @@ void Soldier::setGridPosition(Vector2 gridPositionP)
 void Soldier::shift(Vector2 target)
 {
 	if (getGame().getGrid()->getTile(target.x, target.y)->getTileState() == Tile::TileState::Default) {
+		cout << endl;
+		cout << "position soldier : " << getGridPosition().x << ", " << getGridPosition().y << endl;
+		cout << "postion fonction soldier : " << getGame().getGrid()->getLocationOnGrid(getGridPosition()).x << ", " << getGame().getGrid()->getLocationOnGrid(getGridPosition()).y << endl;
+
 		std::vector<Vector2> pred = ast->mostShortWay(getGame().getGrid()->getLocationOnGrid(getGridPosition()), target);
 
 		reverse(pred.begin(), pred.end());

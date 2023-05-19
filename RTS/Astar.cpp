@@ -11,8 +11,6 @@ vector<Vector2> Astar::mostShortWay(Vector2 start, Vector2 target)
 {
 	Vector2 currentNode;
 
-	//cout << "target : " << target.x << ", " << target.y << endl;
-
 	initialize(graph, start);
 
 	while (!openList.empty())
@@ -26,8 +24,6 @@ vector<Vector2> Astar::mostShortWay(Vector2 start, Vector2 target)
 				currentNode = openList.at(i);
 			}
 		}
-
-		//cout << "currentNode : " << currentNode.x << ", " << currentNode.y << endl;
 
 		auto iter = find(begin(openList), end(openList), currentNode);
 		openList.erase(iter);
@@ -76,22 +72,15 @@ vector<Vector2> Astar::reconstructPath(Vector2 start, Vector2 target)
 {
 	cout << "---- ASTAR ----" << endl;
 	cout << "ORIGIN(" << start.x << ", " << start.y << ") - DESTINATION(" << target.x << ", " << target.y << ")" << endl;
-	//cout << "Cost: " << distance.at(target) << endl;
 
 	vector<Vector2> way;
 
 	way.push_back(target);
-	//cout << "Road: [" << target.x << ", " << target.y << "] <- ";
 	Vector2 node = target;
 	while (node != start)
 	{
-		//cout << "[" << predecessor[node.x][node.y].x << ", " << predecessor[node.x][node.y].y << "]";
 		node = predecessor[node.x][node.y];
 		way.push_back(node);
-		/*
-		if (node != start)
-			cout << " <- ";
-		*/
 	}
 
 	return way;
@@ -100,8 +89,6 @@ vector<Vector2> Astar::reconstructPath(Vector2 start, Vector2 target)
 void Astar::findNeightbours(vector<vector<int>>* graph, Vector2 node)
 {
 	neighbours.clear();
-
-	//cout << endl << node.x << ", " << node.y << " : " << endl;
 
 	for (int i = -1; i < 2; i++)
 	{
@@ -114,7 +101,6 @@ void Astar::findNeightbours(vector<vector<int>>* graph, Vector2 node)
 				{
 					if (graph->at(node.x + i).at(node.y + j) < 1)
 					{
-						//cout << "    " << node.x + i << ", " << node.y + j << endl;
 						neighbours.push_back({ node.x + i, node.y + j });
 					}
 				}
@@ -155,5 +141,4 @@ void Astar::initialize(vector<vector<int>>* mat, Vector2 deb)
 
 		predecessor.push_back(linePred);
 	}
-	//std::cout << "dist : " << distance.size() << std::endl;
 }
