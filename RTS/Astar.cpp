@@ -34,7 +34,9 @@ vector<Vector2> Astar::mostShortWay(Vector2 start, Vector2 target)
 			return reconstructPath(start, target);;
 		}
 
-		findNeightbours(graph, currentNode);
+		neighbours.clear();
+
+		neighbours = findNeightbours(currentNode);
 
 		for (size_t i = 0; i < neighbours.size(); i++)
 		{
@@ -86,9 +88,9 @@ vector<Vector2> Astar::reconstructPath(Vector2 start, Vector2 target)
 	return way;
 }
 
-void Astar::findNeightbours(vector<vector<int>>* graph, Vector2 node)
+vector<Vector2> Astar::findNeightbours(Vector2 node)
 {
-	neighbours.clear();
+	vector<Vector2> listNeighbours;
 
 	for (int i = -1; i < 2; i++)
 	{
@@ -101,12 +103,13 @@ void Astar::findNeightbours(vector<vector<int>>* graph, Vector2 node)
 				{
 					if (graph->at(node.x + i).at(node.y + j) < 1)
 					{
-						neighbours.push_back({ node.x + i, node.y + j });
+						listNeighbours.push_back({ node.x + i, node.y + j });
 					}
 				}
 			}
 		}
 	}
+	return listNeighbours;
 }
 
 void Astar::initialize(vector<vector<int>>* mat, Vector2 deb)

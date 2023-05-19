@@ -52,9 +52,9 @@ void Game::load()
         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 },
         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1, 1, 0, 0, 1 },
         { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 3, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
         { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
         { 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
@@ -82,16 +82,22 @@ void Game::load()
     //grid = new Grid(&circuit);
     grid = new Grid(&map);
 
+    astar = new Astar(&map);
+
     command = new Commander();
 
     Soldier* soldier = new Soldier({ 10, 2 });
-    soldier->setPosition({ 100, 420 });
     //soldier->setRotation(Maths::toRadians(90));
-    soldier->setInitPosition(soldier->getPosition());
-
     soldiers.push_back(soldier);
+    command->addInSelection(soldier);
 
-    //motoInit();
+    Soldier* soldier2 = new Soldier({ 10, 1 });
+    soldiers.push_back(soldier2);
+    command->addInSelection(soldier2);
+
+    Soldier* soldier3 = new Soldier({ 9, 1 });
+    soldiers.push_back(soldier3);
+    command->addInSelection(soldier3);
 }
 
 void Game::loop()
@@ -156,6 +162,18 @@ void Game::removeActor(Actor* actor)
         std::iter_swap(iter, end(actors) - 1);
         actors.pop_back();
     }
+}
+
+bool Game::isOccupedTile()
+{
+    for (auto soldier : soldiers)
+    {
+        if (soldier->getOccupedTile() == grid->getVectorTileSelected())
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Game::endGame()
@@ -243,35 +261,4 @@ void Game::render()
 void Game::newParty()
 {
     partyIsEnd = false;
-
-    for (size_t i = 0; i < motos.size(); i++)
-    {
-        delete motos[i];
-    }
-    //delete moto;
-    motos.clear();
-    
-    motoInit();
-}
-
-void Game::motoInit()
-{
-    Moto* moto = new Moto();
-    moto->setPosition({ 100, 400 });
-    moto->setRotation(Maths::toRadians(90));
-    moto->setInitPosition(moto->getPosition());
-
-    motos.push_back(moto);
-
-    Moto* moto2 = new Moto();
-    moto2->getSpriteComponent().setTexture(Assets::getTexture("Moto2"));
-    //moto2->getInputComponent().setUpKey(SDL_SCANCODE_W);
-    //moto2->getInputComponent().setDownKey(SDL_SCANCODE_S);
-    //moto2->getInputComponent().setLeftKey(SDL_SCANCODE_A);
-    //moto2->getInputComponent().setRightKey(SDL_SCANCODE_D);
-    moto2->setPosition({ 60, 400 });
-    moto2->setRotation(Maths::toRadians(90));
-    moto2->setInitPosition(moto2->getPosition());
-
-    motos.push_back(moto2);
 }

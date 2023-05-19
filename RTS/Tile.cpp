@@ -11,29 +11,6 @@ Tile::Tile() :
 
 void Tile::updateActor(float dt)
 {
-	for (size_t i = 0; i < getGame().getMotos().size(); i++)
-	{
-		/*
-		if (collision != nullptr 
-			&& Intersect(getGame().getMotos()[i]->getCollision(), *collision) 
-			&& (getGame().getMotos()[i]->getInputComponent().getForwardSpeed() >= 5
-			|| getGame().getMotos()[i]->getInputComponent().getForwardSpeed() <= -5))
-		{
-			if (tileState == TileState::EndLine)
-			{
-				if (!getGame().getPartyIsEnd())
-				{
-					std::cout << std::endl << "Player " << i+1 <<" wins!" << std::endl;
-					getGame().endGame();
-				}
-			}
-			else
-			{
-				getGame().getMotos()[i]->getInputComponent().setCrash(true);
-			}
-		}
-		*/
-	}
 }
 
 void Tile::setTileState(TileState tileStateP)

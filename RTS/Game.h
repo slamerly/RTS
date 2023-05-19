@@ -5,9 +5,9 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Grid.h"
-#include "Moto.h"
 #include "Commander.h"
 #include "Soldier.h"
+#include "Astar.h"
 
 using std::vector;
 
@@ -46,11 +46,13 @@ public:
 	Renderer& getRenderer() { return renderer; }
 
 	// Game specific
-	vector<Moto*> getMotos() { return motos; }
 	bool getPartyIsEnd() { return partyIsEnd; }
 	Grid* getGrid() { return grid; }
+	Astar* getAstar() { return astar; }
 	vector<vector<int>>* getMap() { return &map; }
 	vector<Soldier*> getSoldiers() { return soldiers; }
+	bool isOccupedTile();
+
 	void endGame();
 
 private:
@@ -60,7 +62,6 @@ private:
 
 	// Game specific
 	void newParty();
-	void motoInit();
 
 	Window window {};
 	Renderer renderer;
@@ -72,7 +73,7 @@ private:
 
 	// Game specific
 	Grid* grid;
-	vector<Moto*> motos;
+	Astar* astar;
 	vector<Soldier*> soldiers;
 	Commander* command;
 	vector<vector<int>> map;

@@ -44,14 +44,12 @@ public:
 	virtual void actorInput(const Uint8* keyState);
 
 	// RTS
-	Vector2 getInitPosition() { return initPos; }
 	const Vector2 getGridPosition() const { return gridPosition; }
 	std::string tag;
 	bool inMovement = false;
 	Vector2 valueAddView;
 	Vector2 gridPosition;
 
-	void setInitPosition(Vector2 initPosP);
 	virtual void moveMap(Vector2 valueAdd);
 	virtual void setGridPosition(Vector2 gridPositionP);
 

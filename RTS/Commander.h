@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "InputComponent.h"
 #include "Grid.h"
+#include "Soldier.h"
 
 class Commander :
     public Actor
@@ -9,11 +10,14 @@ class Commander :
 public:
     Commander();
 
-    void updateActor(float dt) override;
     void actorInput(const Uint8* keyState) override;
+    void addInSelection(Soldier* soldier);
+    void removeInSelection(Soldier* soldier);
 
 private:
     MoveComponent* mc;
+
+    vector<Soldier*> selectedUnits;
 
     float forwardSpeed;
     float upSpeed;
@@ -22,5 +26,6 @@ private:
     float maxUpSpeed;
 
     void move();
+    void unitMovement();
 };
 

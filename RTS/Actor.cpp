@@ -121,11 +121,6 @@ void Actor::actorInput(const Uint8* keyState)
 {
 }
 
-void Actor::setInitPosition(Vector2 initPosP)
-{
-	initPos = initPosP;
-}
-
 void Actor::moveMap(Vector2 valueAdd)
 {
 	setPosition(initPos + valueAdd);

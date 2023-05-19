@@ -9,6 +9,7 @@ class Astar
 public:
 	Astar(vector<vector<int>>* graph);
 	vector<Vector2> mostShortWay(Vector2 start, Vector2 target);
+	vector<Vector2> findNeightbours(Vector2 node);
 
 private:
 	vector<vector<int>>* graph;
@@ -21,6 +22,5 @@ private:
 
 	int getDistance(Vector2 node1, Vector2 node2);
 	vector<Vector2> reconstructPath(Vector2 start, Vector2 target);
-	void findNeightbours(vector<vector<int>>* graph, Vector2 node);
 	void initialize(vector<vector<int>>* mat, Vector2 deb);
 };

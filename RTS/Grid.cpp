@@ -23,10 +23,6 @@ Grid::Grid() :
 			tiles[i][j]->setTileState(Tile::TileState::Default);
 		}
 	}
-
-	// Set start/end tiles
-	//getStartTile().setTileState(Tile::TileState::Default);
-	//getEndTile().setTileState(Tile::TileState::Border);
 }
 
 Grid::Grid(std::vector<std::vector<int>>* circuit) :
@@ -47,7 +43,6 @@ Grid::Grid(std::vector<std::vector<int>>* circuit) :
 			tiles[i][j] = new Tile();
 			tiles[i][j]->setPosition(Vector2(TILESIZE / 2.0f + j * TILESIZE, START_Y + i * TILESIZE));
 			tiles[i][j]->setGridPosition(tiles[i][j]->getPosition() - getPosition());
-			tiles[i][j]->setInitPosition(tiles[i][j]->getPosition());
 
 			switch (circuit->at(i).at(j))
 			{

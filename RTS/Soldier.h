@@ -1,7 +1,6 @@
 #pragma once
 #include "Actor.h"
 #include "CircleCollisionComponent.h"
-#include "Astar.h"
 #include "NavComponent.h"
 
 class Soldier :
@@ -12,8 +11,8 @@ public:
     ~Soldier();
 
     CircleCollisionComponent& getCollision() { return *collision; }
+    Vector2 getOccupedTile() { return tilePosition; }
 
-    void actorInput(const Uint8* keyState) override;
     void moveMap(Vector2 valueAdd) override;
     void setGridPosition(Vector2 gridPositionP) override;
     void shift(Vector2 target);
@@ -21,7 +20,6 @@ public:
 private:
     CircleCollisionComponent* collision;
     NavComponent* nc;
-    Astar* ast;
 
     Vector2 tilePosition;
 };
